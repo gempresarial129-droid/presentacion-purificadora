@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Purificadora Rodríguez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide 1 - Portada */
+        .slide-1 {
+            background: linear-gradient(135deg, #0084ff 0%, #00d4ff 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .slide-1 h2 {
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .wave-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        /* Slide 2 - Retos */
+        .slide-2 {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .slide-title {
+            font-size: 2.5em;
+            color: #0084ff;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .problem-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Slide 3 - Solución */
+        .slide-3 {
+            background: linear-gradient(135deg, #00d4ff 0%, #0084ff 100%);
+            color: white;
+        }
+
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+        }
+
+        .card-mockup {
+            width: 400px;
+            height: 250px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-mockup::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .card-logo {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 8px;
+            align-self: flex-start;
+        }
+
+        .nfc-icon {
+            font-size: 2em;
+            align-self: flex-end;
+        }
+
+        .solution-text {
+            flex: 1;
+        }
+
+        .solution-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .solution-text p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Slide 4 - Doble Saldo */
+        .slide-4 {
+            background: white;
+        }
+
+        .slide-4 .slide-title {
+            color: #0084ff;
+        }
+
+        .balance-types {
+            display: flex;
+            gap: 60px;
+            max-width: 1000px;
+        }
+
+        .balance-card {
+            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .balance-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        .balance-card h3 {
+            font-size: 1.8em;
+            color: #0084ff;
+            margin-bottom: 20px;
+        }
+
+        .balance-card p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Slide 5 - Recarga Digital */
+        .slide-5 {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .recharge-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .recharge-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-box h4 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Slide 6 - Beneficios */
+        .slide-6 {
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #0084ff 0%, #00d4ff 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,132,255,0.3);
+        }
+
+        .benefit-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Slide 7 - Próximos Pasos */
+        .slide-7 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .steps-container {
+            max-width: 800px;
+        }
+
+        .step {
+            background: rgba(255,255,255,0.2);
+            padding: 30px 40px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .step-number {
+            font-size: 3em;
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .step-content h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Navegación */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: #0084ff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Portada -->
+        <div class="slide slide-1 active">
+            <div class="wave-icon">💧</div>
+            <h1>La Evolución de la Purificadora Rodríguez</h1>
+            <h2>Del Papel a la Innovación Digital NFC</h2>
+        </div>
+
+        <!-- Slide 2: Retos -->
+        <div class="slide slide-2">
+            <h2 class="slide-title">Diagnóstico: Los Retos del Cupón Físico</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Riesgo de Pérdida y Fraude</h3>
+                    <p>Los cupones físicos son vulnerables a extravío, falsificación y uso indebido, generando pérdidas operativas.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🐌</div>
+                    <h3>Fricción en la Entrega</h3>
+                    <p>Proceso lento y manual que retrasa la atención al cliente y reduce la eficiencia operativa.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📊</div>
+                    <h3>Sin Data ni Fidelización</h3>
+                    <p>Imposibilidad de rastrear comportamiento, crear programas de lealtad o tomar decisiones basadas en datos.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Solución -->
+        <div class="slide slide-3">
+            <div class="solution-content">
+                <div class="card-mockup">
+                    <div class="card-logo">Purificadora<br>Rodríguez</div>
+                    <div class="card-chip"></div>
+                    <div class="nfc-icon">📡</div>
+                </div>
+                <div class="solution-text">
+                    <h2>La Solución: Ecosistema NFC Inteligente</h2>
+                    <p>Migración completa a una Tarjeta de Saldo Reutilizable NFC integrada con la App móvil Purificadora Rodríguez. Una solución moderna, segura y escalable que transforma la experiencia del cliente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Doble Saldo -->
+        <div class="slide slide-4">
+            <h2 class="slide-title">Doble Saldo, Máxima Flexibilidad</h2>
+            <div class="balance-types">
+                <div class="balance-card">
+                    <div class="balance-icon">🏢</div>
+                    <h3>Saldo en Unidades</h3>
+                    <p>Perfecto para clientes corporativos que requieren control de consumo por botellones. Sistema de crédito prepagado eficiente y transparente.</p>
+                </div>
+                <div class="balance-card">
+                    <div class="balance-icon">💰</div>
+                    <h3>Saldo en Dinero</h3>
+                    <p>Ideal para clientes minoristas que prefieren flexibilidad total. Carga el monto que necesites y úsalo cuando quieras.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Recarga Digital -->
+        <div class="slide slide-5">
+            <div class="recharge-content">
+                <h2 class="slide-title">Ventaja Competitiva: El Poder de la Recarga Digital</h2>
+                <p style="font-size: 1.3em; margin-bottom: 20px;">Integración perfecta con la App y Mercado Pago para recargas instantáneas</p>
+                <div class="recharge-features">
+                    <div class="feature-box">
+                        <h4>🕐 Disponibilidad 24/7</h4>
+                        <p>Tus clientes recargan cuando quieran, desde donde quieran</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>💳 Flujo de Caja Prepagado</h4>
+                        <p>Mejora tu liquidez con pagos anticipados automáticos</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>📱 Experiencia Sin Fricción</h4>
+                        <p>Proceso de recarga en menos de 30 segundos</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>🔒 Seguridad Total</h4>
+                        <p>Transacciones protegidas con encriptación bancaria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Beneficios -->
+        <div class="slide slide-6">
+            <h2 class="slide-title">Beneficios Clave para la Operación</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Eficiencia y Velocidad</h3>
+                    <p>Canje instantáneo con un simple toque NFC. Reduce tiempos de atención en un 70% y mejora la experiencia del cliente.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Control Total y Cero Fraude</h3>
+                    <p>Trazabilidad completa de cada transacción. Sistema imposible de falsificar con auditoría en tiempo real.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>Programas de Lealtad</h3>
+                    <p>Base sólida para implementar recompensas digitales, descuentos y promociones personalizadas que aumentan la retención.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Próximos Pasos -->
+        <div class="slide slide-7">
+            <h2 class="slide-title">Próximos Pasos: Plan de Implementación</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Adquisición y Diseño NFC</h3>
+                        <p>Selección de proveedor de tarjetas NFC y diseño corporativo personalizado con la identidad de Purificadora Rodríguez.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Integración Tecnológica</h3>
+                        <p>Desarrollo de la App móvil con integración de Mercado Pago y sistema de gestión de saldos en la nube.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Lanzamiento y Migración</h3>
+                        <p>Campaña de comunicación para migrar a clientes actuales y capacitación del equipo operativo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current">1</span> / 7
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prev">←</button>
+        <button class="nav-btn" id="next">→</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const currentCounter = document.getElementById('current');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            currentCounter.textContent = currentSlide + 1;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        });
+    </script>
+</body>
+</html>

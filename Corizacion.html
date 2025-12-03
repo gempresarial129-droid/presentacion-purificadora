@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización - Purificadora Rodríguez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0084ff 0%, #00d4ff 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h2 {
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .header .date {
+            font-size: 1.1em;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #0084ff;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #00d4ff;
+        }
+
+        .services-grid {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid #0084ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,132,255,0.2);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.4em;
+            color: #333;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .service-price {
+            font-size: 1.6em;
+            color: #0084ff;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .total-section {
+            background: linear-gradient(135deg, #0084ff 0%, #00d4ff 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .total-label {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .ideas-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .ideas-section h3 {
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        .idea-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .idea-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .idea-title {
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .idea-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .examples-section {
+            margin-top: 60px;
+        }
+
+        .example-block {
+            margin-bottom: 50px;
+        }
+
+        .example-title {
+            font-size: 1.6em;
+            color: #0084ff;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .image-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-container-single img {
+            max-width: 350px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .image-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            color: #856404;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💧 Cotización</h1>
+            <h2>Purificadora Rodríguez</h2>
+            <div class="date">📅 02/12/2025</div>
+        </div>
+
+        <div class="content">
+            <h3 class="section-title">Servicios de Desarrollo</h3>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">🎫 Ticket</div>
+                        <div class="service-price">$1,950.00</div>
+                    </div>
+                    <div class="service-description">
+                        Poder imprimir en cualquier SO, el resumen de liquidación con 6-8 variables, y 2 revisiones del diseño.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">🌐 App en español</div>
+                        <div class="service-price">$600.00</div>
+                    </div>
+                    <div class="service-description">
+                        Pasar la app a español.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">🔄 Cupones de servidor a local</div>
+                        <div class="service-price">$1,291.00</div>
+                    </div>
+                    <div class="service-description">
+                        Pasar el proceso de carga de cupones de forma local, de esa forma, se hará más rápido el proceso y no hay necesidad de volver a sincronizar para ver los resultados.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">📊 Vista resumen para cada servicio en liquidación</div>
+                        <div class="service-price">$5,472.00</div>
+                    </div>
+                    <div class="service-description">
+                        Hacer vistas modernas y más visuales para cada servicio de liquidación, en total 5 (sellado, loca, relleno, granel, máquina).
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">📋 Estados para vista tabla</div>
+                        <div class="service-price">$600.00</div>
+                    </div>
+                    <div class="service-description">
+                        Hacer estado más moderno, para la vista de tabla de liquidaciones.
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-section">
+                <div class="total-label">Total del Proyecto</div>
+                <div class="total-amount">$9,913.00</div>
+            </div>
+
+            <div class="ideas-section">
+                <h3>💡 Ideas para el Futuro</h3>
+                <div class="idea-item">
+                    <div class="idea-title">🔐 Pasar cupones a tarjetas NFC</div>
+                    <div class="idea-price">Por cotizar</div>
+                </div>
+                <div class="idea-item">
+                    <div class="idea-title">🤖 Analizar info con Cloud IA</div>
+                    <div class="idea-price">Por cotizar</div>
+                </div>
+            </div>
+
+            <div class="examples-section">
+                <h3 class="section-title">Ejemplos Visuales</h3>
+                
+                <div class="example-block">
+                    <div class="example-title">📄 Ticket - Ejemplo</div>
+                    <div class="image-container image-container-single">
+                        <img src="https://drive.google.com/thumbnail?id=1ATpE935VtJ9To7ikBTRNwCkdfRQgU-ng&sz=w2000">
+
+                    </div>
+                    <div class="image-note">
+                        💡 El diseño final del ticket incluirá 6-8 variables personalizables según los requerimientos específicos de la purificadora.
+                    </div>
+                </div>
+
+                <div class="example-block">
+                    <div class="example-title">🖥️ Ejemplo de vista resumen para el servicio local</div>
+                    <div class="image-grid">
+                        <div class="image-container">
+                            <img src="https://drive.google.com/thumbnail?id=12YeifdJesn0nXMeM2cMLCzTVHf_EQmQ7&sz=w2000">
+
+                            
+                        </div>
+                        <div class="image-container">
+                            <img src="https://drive.google.com/thumbnail?id=1W2q-tAM0rp5T6vjgoEO0oiC2WV5Pb0oQ&sz=w2000">
+                        </div>
+                    </div>
+                    <div class="image-note">
+                        💡 Las vistas modernas incluirán diseño responsivo y visualización optimizada para diferentes dispositivos.
+                    </div>
+                </div>
+
+                <div class="example-block">
+                    <div class="example-title">📋 Estados para vista tabla</div>
+                    <div class="image-container image-container-single">
+                        <img src="https://drive.google.com/thumbnail?id=1W2q-tAM0rp5T6vjgoEO0oiC2WV5Pb0oQ&sz=w1000" alt="Estados de la vista tabla">
+                    </div>
+                    <div class="image-note">
+                        💡 <strong>Cambio importante:</strong> Los estados serán actualizados a: Aprobada, Rechazada, Revisar, Validada con diseño moderno y códigos de color intuitivos.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Purificadora Rodríguez</strong> - Cotización válida por 30 días</p>
+            <p>Para cualquier duda o aclaración, no dudes en contactarnos</p>
+        </div>
+    </div>
+</body>
+</html>
